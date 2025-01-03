@@ -5,7 +5,11 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './components/Root/Root';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import Home from './components/Home/Home';
+import Dashboard from './components/PendingAssignments/PendingAssignments';
+import HowToHelp from './components/HowToHelp/HowToHelp';
+import DonationDetail from './components/DonationDetail/DonationDetail';
 import { Helmet } from 'react-helmet';
+import DonationCampaigns from './components/Assignments/Assignments';
 import Login from './components/LogIn/LogIn';
 import Register from './components/Register/Register';
 import ForgotPassword from './components/ForgotPassword/ForgotPassword';
@@ -59,7 +63,30 @@ const router = createBrowserRouter([
           </>
         ),
       },
-      
+      {
+        path: 'HowToHelp',
+        element: (
+          <>
+            <Helmet>
+              <title>How To Help - Winter Clothing Donation</title>
+              <meta name="description" content="Learn more about us." />
+            </Helmet>
+            <HowToHelp />
+          </>
+        ),
+      },
+      {
+        path: '/donationDetail/:campaignId',
+        element: (
+          <>
+            <Helmet>
+              <title>Donation Detail - Winter Clothing Donation</title>
+              <meta name="description" content="Learn more about this campaign." />
+            </Helmet>
+            <PrivateRoute element={<DonationDetail/>} />,
+          </>
+        ),
+      },
       {
         path: '/LogIn',
         element: (

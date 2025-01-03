@@ -5,14 +5,17 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './components/Root/Root';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import Home from './components/Home/Home';
+import Dashboard from './components/PendingAssignments/PendingAssignments';
+import HowToHelp from './components/HowToHelp/HowToHelp';
+import DonationDetail from './components/DonationDetail/DonationDetail';
 import { Helmet } from 'react-helmet';
+import DonationCampaigns from './components/Assignments/Assignments';
 import Login from './components/LogIn/LogIn';
 import Register from './components/Register/Register';
 import ForgotPassword from './components/ForgotPassword/ForgotPassword';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import UpdateProfile from './components/UpdateProfile/UpdateProfile';
 import Assignments from './components/Assignments/Assignments';
-import PendingAssignments from './components/PendingAssignments/PendingAssignments';
 
 
 // Create the router with all the routes
@@ -52,14 +55,37 @@ const router = createBrowserRouter([
         element: (
           <>
             <Helmet>
-              <title>Pending Assignments-Study Hive</title>
+              <title>Dashboard - Winter Clothing Donation</title>
               <meta name="description" content="Your personal dashboard." />
             </Helmet>
-            <PrivateRoute element={<PendingAssignments/>} />
+            <PrivateRoute element={<Dashboard/>} />
           </>
         ),
       },
-      
+      {
+        path: 'HowToHelp',
+        element: (
+          <>
+            <Helmet>
+              <title>How To Help - Winter Clothing Donation</title>
+              <meta name="description" content="Learn more about us." />
+            </Helmet>
+            <HowToHelp />
+          </>
+        ),
+      },
+      {
+        path: '/donationDetail/:campaignId',
+        element: (
+          <>
+            <Helmet>
+              <title>Donation Detail - Winter Clothing Donation</title>
+              <meta name="description" content="Learn more about this campaign." />
+            </Helmet>
+            <PrivateRoute element={<DonationDetail/>} />,
+          </>
+        ),
+      },
       {
         path: '/LogIn',
         element: (
